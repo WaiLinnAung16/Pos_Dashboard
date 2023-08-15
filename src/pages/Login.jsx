@@ -5,7 +5,10 @@ import {
   AiOutlineEyeInvisible,
   AiOutlineMail,
 } from "react-icons/ai";
+
+import {BiUser} from "react-icons/bi"
 import { RiLockLine } from "react-icons/ri";
+import img from "../../public/loginImg.jpg"
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,7 +16,9 @@ const Login = () => {
   return (
     <div className="bg-gray-50 overflow-hidden font-nunito grid lg:grid-cols-5 h-screen">
       {/* right login form */}
-      <div className=" animate__animated animate__fadeInRight bg-img max-lg:hidden col-span-3 flex justify-center items-center bg-[#161618]"></div>
+      <div className="max-lg:hidden col-span-3 bg-[#161618]">
+        <img className="h-full w-full object-cover" src={img} alt="" />
+      </div>
       {/* right   */}
       <div className="  col-span-2 flex justify-center items-center max-[400px]:mx-4 bg-[#202124]">
         <div className=" max-[400px]:w-[300px] w-[400px]">
@@ -32,13 +37,13 @@ const Login = () => {
                 onChange={""}
                 defaultValue={""}
                 type="text"
-                name="email"
+                name="username"
                 placeholder="Username"
                 className=" text-gray-600 pl-12 py-4 rounded w-full outline-none bg-blue-50"
               />
               <small className="text-red-500"></small>
               <span className=" absolute top-[18px] left-5 text-gray-400 text-lg">
-                <AiOutlineMail />
+                <BiUser />
               </span>
             </div>
             <div className=" relative">
