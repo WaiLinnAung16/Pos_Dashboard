@@ -1,0 +1,91 @@
+.mantine-ScrollArea-thumb {
+  background-color: #6e82a550;
+}
+
+.mantine-ScrollArea-scrollbar:hover {
+  background-color: transparent;
+}
+
+.sidebar-menu::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  height: 20px;
+  width: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: 50% 50%;
+  background-color: #0b1219;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.sidebar-menu:hover::before {
+  opacity: 1;
+  width: 45px;
+  height: 45px;
+}
+
+.sidebar {
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.mantine-Accordion-item {
+  border: none;
+}
+
+.mantine-Accordion-control {
+  padding: 0;
+}
+
+.mantine-Accordion-control:hover {
+  background-color: inherit;
+}
+
+.mantine-Accordion-chevron {
+  color: #9faec2;
+}
+
+.mantine-Accordion-label {
+  padding: 0;
+}
+
+.mantine-Accordion-content {
+  padding: 10px 36px;
+}
+
+.side-menu.active {
+  color: #8ab4f8;
+}
+
+/* sidebar close  */
+
+.sidebar.sidebar-close {
+  width: 74px;
+}
+
+.sidebar.sidebar-close .sidebar-body {
+  width: 74px;
+}
+
+.sidebar.sidebar-close .mantine-Accordion-content {
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar.sidebar-close .list-item {
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar.sidebar-close .side-menu .list-text,
+.sidebar.sidebar-close .mantine-Accordion-chevron,
+.sidebar.sidebar-close .logo-container,
+.sidebar.sidebar-close .booking-list {
+  display: none;
+}
