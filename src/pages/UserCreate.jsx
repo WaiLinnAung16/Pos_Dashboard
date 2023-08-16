@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import PersonalForm from "../components/PersonalForm";
 import Step from "../components/Step";
 import LoginInfoForm from "../components/LoginInfoForm";
 import PhotoUploadForm from "../components/PhotoUploadForm";
+import Multiform from "../components/Multiform";
+import { Link } from "react-router-dom";
 
 const UserCreate = () => {
+  const [active, setActive] = useState(0);
+  const nextStep = () =>
+    setActive((current) => (current < 3 ? current + 1 : current));
   return (
     <div className="bg-[#202124] p-5 min-h-screen">
       <div className="flex justify-between items-center">
@@ -14,14 +19,16 @@ const UserCreate = () => {
             User <span className="text-[#8AB4F8]">/</span> Create User
           </p>
         </div>
-        <button className=" bg-[#8ab4f8] rounded px-5 py-[10px] font-semibold">
-          User List
-        </button>
+        <Link to={"/user-overview"}>
+          <button className=" bg-[#8ab4f8] rounded px-5 py-[10px] font-semibold">
+            User List
+          </button>
+        </Link>
       </div>
 
       <div className="flex items-center gap-5">
-        <PhotoUploadForm />
-        <Step />
+        <Multiform active={active} />
+        <Step active={active} setActive={setActive} nextStep={nextStep} />
       </div>
     </div>
   );

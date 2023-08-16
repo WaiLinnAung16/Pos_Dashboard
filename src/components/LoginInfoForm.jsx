@@ -2,7 +2,7 @@ import React from "react";
 
 const LoginInfoForm = () => {
   return (
-    <div className="bg-[#161618] border border-[#3f4245] rounded-md w-[700px] p-10 mt-5">
+    <div className="bg-[#161618] border border-[#3f4245] rounded-md w-[700px] h-[450px] p-10 mt-5">
       <div className="grid grid-cols-12">
         <div className="col-span-3 text-white font-bold flex flex-col gap-10">
           <h1>Position</h1>

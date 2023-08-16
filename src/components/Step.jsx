@@ -1,14 +1,7 @@
-import { useState } from "react";
-import { Stepper, Button, Group } from "@mantine/core";
+import { Stepper } from "@mantine/core";
 import { BsArrowRightShort } from "react-icons/bs";
 
-const Step = () => {
-  const [active, setActive] = useState(1);
-  const nextStep = () =>
-    setActive((current) => (current < 3 ? current + 1 : current));
-  const prevStep = () =>
-    setActive((current) => (current > 0 ? current - 1 : current));
-
+const Step = ({ active, setActive, nextStep }) => {
   return (
     <div className="flex flex-col">
       <Stepper

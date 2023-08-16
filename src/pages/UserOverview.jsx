@@ -1,6 +1,7 @@
 import React from "react";
 import { BsPlusLg } from "react-icons/bs";
 import UserList from "../components/UserList";
+import { Link } from "react-router-dom";
 import UserDetail from "../components/UserDetail";
 
 const UserOverview = () => {
@@ -13,10 +14,12 @@ const UserOverview = () => {
             User <span className="text-[#8AB4F8]">/</span> Overview
           </p>
         </div>
-        <button className=" bg-[#8ab4f8] flex items-center gap-3 rounded px-5 py-[10px] font-semibold">
-          <BsPlusLg className="text-xl" />
-          Create User
-        </button>
+        <Link to={"/user-create"}>
+          <button className=" bg-[#8ab4f8] flex items-center gap-3 rounded px-5 py-[10px] font-semibold">
+            <BsPlusLg className="text-xl" />
+            Create User
+          </button>
+        </Link>
       </div>
       <UserList />
       <UserDetail />
