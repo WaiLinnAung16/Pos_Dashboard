@@ -4,8 +4,10 @@ import clock from "../../public/Clock.svg";
 import envelope from "../../public/EnvelopeOpen.svg";
 import phoneCall from "../../public/PhoneCall.svg";
 import saleColor from "../../public/saleColor.svg";
+import pencil from "../../public/PencilSimpleLine.svg";
 import { Tabs } from "@mantine/core";
 import "./profile.css";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   return (
@@ -20,22 +22,28 @@ const Profile = () => {
           </p>
         </div>
         <div className="">
-          <div className="px-[16px] py-[7px] flex items-center gap-2 text-[#202124] font-[600]  bg-[#8AB4F8] rounded-[5px]">
+          <Link
+            to={"/profile-edit"}
+            className="px-[16px] py-[7px] cursor-pointer flex items-center gap-2 text-[#202124] font-[600]  bg-[#8AB4F8] rounded-[5px]"
+          >
             <AiOutlinePlus size={16} />
             Edit Profile
-          </div>
+          </Link>
         </div>
       </div>
 
       <div className="bg-[#1A1A1A] text-white ">
         <div className=" flex justify-between items-end pl-16 pr-8">
           <div className=" flex items-end gap-[33px] mt-[-50px]">
-            <div className="">
+            <div className="relative">
               <img
                 className=" w-[139px] h-[139px] object-cover rounded-full"
                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVvcGxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
                 alt=""
               />
+              <div className=" absolute bottom-0 right-0 border-[1.63px] border-black w-[39px] h-[39px] flex items-center justify-center  rounded-full bg-white">
+                <img src={pencil} alt="" />
+              </div>
             </div>
             <div>
               <h3 className=" text-[26px] font-[600]">Ethan James</h3>
@@ -121,9 +129,7 @@ const Profile = () => {
                   </p>
                 </div>
                 <div className=" flex items-center gap-[158px]">
-                  <p className=" text-[#B9B9B9] text-[18px] font-[600]">
-                    Mail
-                  </p>
+                  <p className=" text-[#B9B9B9] text-[18px] font-[600]">Mail</p>
                   <p className=" text-[18px] font-[500] leading-[21.94px]">
                     : ethan123@gmail.com
                   </p>
