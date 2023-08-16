@@ -1,5 +1,4 @@
 .mantine-Tabs-tabsList {
-    /* border: none; */
     gap: 40px;
     padding-bottom: 20px;
     padding-left: 64px;
@@ -9,15 +8,15 @@
 }
 
 .mantine-Tabs-tab {
-    color: #878787;
-    border-bottom: none;
-    gap: 5px;
+  color: #878787;
+  border-bottom: none;
+  gap: 5px;
 }
 
 .mantine-Tabs-tab:hover {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .mantine-13567ew[data-active] {
-    color: #ffffff;
+  color: #ffffff;
 }
