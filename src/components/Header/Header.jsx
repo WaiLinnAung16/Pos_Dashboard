@@ -31,7 +31,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className=" py-[17px] px-8 sticky z-50 bg-[#202124] border-[#3F4245] border-b-[2px] top-0">
+      <nav className=" py-[17px] px-8 sticky z-50 bg-[#202124] border-[#3F4245] border-b-[1px] top-0">
         <div className=" flex items-center gap-5  justify-end">
           <div>
             <img src={bell} alt="" />

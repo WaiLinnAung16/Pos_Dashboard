@@ -48,7 +48,7 @@ const Sidebar = () => {
             </div>
           </div>
 
-          <ScrollArea h={670} scrollbarSize={8} scrollHideDelay={500}>
+          <ScrollArea h={680} scrollbarSize={8} scrollHideDelay={500} className="border-[#3F4245] border-r border-b">
             <div className=" w-[300px] sidebar-body">
               <ul className="py-8 px-6 space-y-5 list-group">
                 <li className="list-item">
