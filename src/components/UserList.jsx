@@ -59,7 +59,7 @@ const UserList = () => {
   ));
 
   return (
-    <Table withBorder className="mt-5">
+    <Table withBorder className="mt-5 ">
       <thead>
         <tr>
           <th>

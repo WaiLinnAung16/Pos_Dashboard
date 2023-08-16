@@ -45,7 +45,7 @@ const UserDetailTabs = () => {
           Password
         </Tabs.Tab>
       </Tabs.List>
-      <hr />
+      <hr className=" border-[#3F4245]" />
       <Tabs.Panel value="personal" pt="xs">
         <div className="grid grid-cols-7">
           <div className="col-span-2 flex flex-col gap-3">

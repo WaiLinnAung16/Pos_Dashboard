@@ -1,23 +1,23 @@
 .mantine-Tabs-tabsList {
-    /* border: none; */
-    gap: 20px;
-    padding-bottom: 20px;
-    padding-left: 64px;
-    padding-right: 32px;
-    border-color: #878787;
-    font-weight: 600;
+  /* border: none; */
+  gap: 20px;
+  padding-bottom: 20px;
+  padding-left: 64px;
+  padding-right: 32px;
+  border-color: #878787;
+  font-weight: 600;
 }
 
 .mantine-Tabs-tab {
-    color: #878787;
-    border-bottom: none;
-    gap: 5px;
+  color: #878787;
+  border-bottom: none;
+  gap: 5px;
 }
 
 .mantine-Tabs-tab:hover {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .mantine-13567ew[data-active] {
-    color: #ffffff;
+  color: #ffffff;
 }

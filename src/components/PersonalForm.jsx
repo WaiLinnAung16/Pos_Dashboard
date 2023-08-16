@@ -3,7 +3,7 @@ import React from "react";
 
 const PersonalForm = () => {
   return (
-    <div className="bg-[#161618] border border-[#3f4245] rounded-md w-[700px] p-10 mt-5">
+    <div className="bg-[#161618] border border-[#3f4245] rounded-md w-[700px] h-[450px] p-10 mt-5">
       <div className="grid grid-cols-12">
         <div className="col-span-3 text-white font-bold flex flex-col gap-10">
           <h1>Name</h1>
@@ -30,7 +30,12 @@ const PersonalForm = () => {
               <Radio
                 value="male"
                 label="Male"
+                color="dark"
                 styles={{
+                  radio: {
+                    backgroundColor: "transparent",
+                    borderColor: "#3F4245",
+                  },
                   label: {
                     color: "white",
                   },
@@ -39,7 +44,12 @@ const PersonalForm = () => {
               <Radio
                 value="female"
                 label="Female"
+                color="dark"
                 styles={{
+                  radio: {
+                    backgroundColor: "transparent",
+                    borderColor: "#3F4245",
+                  },
                   label: {
                     color: "white",
                   },
