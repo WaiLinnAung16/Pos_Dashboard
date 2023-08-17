@@ -8,6 +8,10 @@ import Profile from "../pages/Profile";
 import ProfileEdit from "../pages/ProfileEdit";
 import Login from "../pages/Login";
 import Layout from "../Layout";
+import Products from "../pages/Products";
+import AddProducts from "../pages/AddProducts";
+import StockControl from "../pages/StockControl";
+import ManageBrands from "../pages/ManageBrands";
 
 const Path = () => {
   return (
@@ -20,6 +24,10 @@ const Path = () => {
           <Route path="user-create" element={<UserCreate />} />
           <Route path="profile" element={<Profile />} />
           <Route path="profile-edit" element={<ProfileEdit />} />
+          <Route path="products" element={<Products />} />
+          <Route path="add-products" element={<AddProducts />} />
+          <Route path="stock-control" element={<StockControl />} />
+          <Route path="manage-brands" element={<ManageBrands />} />
         </Route>
         <Route path="/login" element={<Login />} />
       </Routes>

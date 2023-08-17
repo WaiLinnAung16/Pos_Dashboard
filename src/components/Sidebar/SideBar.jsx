@@ -48,7 +48,7 @@ const Sidebar = () => {
             </div>
           </div>
 
-          <ScrollArea h={680} scrollbarSize={8} scrollHideDelay={500} className="border-[#3F4245] border-r border-b">
+          <ScrollArea h={680} scrollbarSize={8} scrollHideDelay={500} className="border-[#3F4245] border-r">
             <div className=" w-[300px] sidebar-body">
               <ul className="py-8 px-6 space-y-5 list-group">
                 <li className="list-item">
@@ -135,7 +135,7 @@ const Sidebar = () => {
                               onClick={() => {
                                 close();
                               }}
-                              to={`/rooms`}
+                              to={`/products`}
                               className="side-menu hover:text-white text-[14px]"
                             >
                               <span className="">Products</span>
@@ -146,7 +146,7 @@ const Sidebar = () => {
                               onClick={() => {
                                 close();
                               }}
-                              to={`/room-add`}
+                              to={`/add-products`}
                               className="side-menu hover:text-white text-[14px]"
                             >
                               <span className="">Add Products</span>
@@ -157,7 +157,7 @@ const Sidebar = () => {
                               onClick={() => {
                                 close();
                               }}
-                              to={`/room-add`}
+                              to={`/stock-control`}
                               className="side-menu hover:text-white text-[14px]"
                             >
                               <span className="">Stocks Control</span>
@@ -168,7 +168,7 @@ const Sidebar = () => {
                               onClick={() => {
                                 close();
                               }}
-                              to={`/room-add`}
+                              to={`/manage-brands`}
                               className="side-menu hover:text-white text-[14px]"
                             >
                               <span className="">Manage Brands</span>
