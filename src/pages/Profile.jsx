@@ -6,7 +6,6 @@ import phoneCall from "../../public/PhoneCall.svg";
 import saleColor from "../../public/saleColor.svg";
 import pencil from "../../public/PencilSimpleLine.svg";
 import { Tabs } from "@mantine/core";
-import "./profile.css";
 import { Link } from "react-router-dom";
 
 const Profile = () => {
@@ -68,7 +67,31 @@ const Profile = () => {
         </div>
 
         <div className=" mt-10">
-          <Tabs color="gray" radius="xs" defaultValue="gallery">
+          <Tabs
+            styles={{
+              tabsList: {
+                paddingBottom: "20px",
+                paddingLeft: "64px",
+                paddingRight: "32px",
+                fontWeight: "600",
+                border: "#878787",
+              },
+              tab: {
+                color: "#878787",
+                borderBottom: "none",
+                gap: "5px",
+                "&:hover": {
+                  backgroundColor: "transparent",
+                },
+                "&[data-active]": {
+                  color: "white",
+                },
+              },
+            }}
+            color="gray"
+            radius="xs"
+            defaultValue="gallery"
+          >
             <Tabs.List>
               <Tabs.Tab value="gallery" icon={<img src={saleColor} />}>
                 Personal
@@ -80,6 +103,8 @@ const Profile = () => {
                 Password
               </Tabs.Tab>
             </Tabs.List>
+
+            <hr className=" border-[#3F4245]" />
 
             <Tabs.Panel value="gallery" pt="xs">
               <div className="pl-16 pr-8 flex flex-col gap-[30px] py-[30px]">
