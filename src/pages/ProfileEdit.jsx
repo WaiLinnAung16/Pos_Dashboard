@@ -11,7 +11,7 @@ import { Radio } from "@mantine/core";
 
 const ProfileEdit = () => {
   return (
-    <div className=" relative">
+    <div className=" relative min-h-screen">
       <div className=" mx-6 my-3">
         <div className="flex justify-between items-center mb-20">
           <div>
