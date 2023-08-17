@@ -3,6 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
+import BrandsTable from "../components/BrandsTable";
 
 const ManageBrands = () => {
   return (
@@ -53,25 +54,25 @@ const ManageBrands = () => {
             <div>
               <p className="flex items-center gap-2 text-[#7E7F80] text-[14px]">
                 Sort :{" "}
-                <span className=" flex items-center gap-1 text-white">
-                  <p>Last</p>
-                  <IoIosArrowDown className="pt-[2px] w-[14px] h-[14px] text-[#8AB4F8]" />{" "}
-                </span>
+                <button className=" flex gap-1 items-center text-white">
+                  Last <IoIosArrowDown className="pt-[2px] text-[#8AB4F8]" />
+                </button>
               </p>
             </div>
             <div>
               <p className="flex items-center gap-2 text-[#7E7F80] text-[14px]">
                 Filter :{" "}
-                <span className=" flex items-center gap-1 text-white">
-                  <p>All files</p>
-                  <IoIosArrowDown className="pt-[2px] w-[14px] h-[14px] text-[#8AB4F8]" />{" "}
-                </span>
+                <button className=" flex gap-1 items-center text-white">
+                  All files <IoIosArrowDown className="pt-[2px] text-[#8AB4F8]" />
+                </button>
               </p>
             </div>
           </div>
         </div>
 
-        <div className="mt-[30px]"></div>
+        <div className="mt-[30px]">
+          <BrandsTable />
+        </div>
       </div>
     </div>
   );
