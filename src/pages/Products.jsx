@@ -6,6 +6,8 @@ import { IoIosArrowDown } from "react-icons/io";
 import { BsListUl } from "react-icons/bs";
 import { BiGridAlt } from "react-icons/bi";
 import BrandsTable from "../components/BrandsTable";
+import ProductsTable from "../components/ProductsTable";
+import ProductsGrid from "../components/ProductsGrid";
 
 const Products = () => {
   const [toggle, setToggle] = useState(true);
@@ -73,11 +75,14 @@ const Products = () => {
             </div>
 
             <div className="flex items-center justify-center gap-3 w-[59px] h-[28px] bg-transparent border rounded-[5px] px-[5px] border-[#7E7F80]">
-              <div className={toggle ? "" : ""} onClick={() => setToggle(true)}>
+              <div
+                className={toggle ? "text-[#8AB4F8]" : ""}
+                onClick={() => setToggle(true)}
+              >
                 <BsListUl />
               </div>
               <div
-                className={toggle ? "" : ""}
+                className={toggle ? "" : "text-[#8AB4F8]"}
                 onClick={() => setToggle(false)}
               >
                 <BiGridAlt />
@@ -87,7 +92,7 @@ const Products = () => {
         </div>
 
         <div className="mt-[30px]">
-          {toggle ? <BrandsTable/> : "ok"}
+          {toggle ? <ProductsTable /> : <ProductsGrid />}
         </div>
       </div>
     </div>
