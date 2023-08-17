@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const Profile = () => {
   return (
-    <div className=" mx-6 my-3">
+    <div className=" mx-6 my-3 min-h-screen">
       <div className="flex justify-between items-center mb-20">
         <div>
           <h3 className=" text-[22px] font-[600] text-white mb-[8px]">
