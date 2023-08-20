@@ -22,7 +22,13 @@ const Products = () => {
             Inventory / Manage Brands
           </p>
         </div>
-        <div className="">
+        <div className=" flex items-center gap-3">
+        <Link
+            to={"/profile-edit"}
+            className="px-[16px] py-[7px] cursor-pointer flex items-center gap-2 font-[600] bg-transparent border border-[#7E7F80] text-[#8AB4F8] rounded-[5px]"
+          >
+            Go to Shop
+          </Link>
           <Link
             to={"/profile-edit"}
             className="px-[16px] py-[7px] cursor-pointer flex items-center gap-2 text-[#202124] font-[600]  bg-[#8AB4F8] rounded-[5px] transition-all hover:bg-[#8ab4f8a7]"
