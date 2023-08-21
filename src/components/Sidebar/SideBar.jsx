@@ -1,14 +1,5 @@
-import React, { useState } from "react";
-import { MdSpaceDashboard } from "react-icons/md";
-import { AiFillSetting, AiFillDashboard, AiFillCalendar } from "react-icons/ai";
+import React from "react";
 import { IoIosMenu } from "react-icons/io";
-import { HiUsers } from "react-icons/hi";
-import { FaCoins, FaLayerGroup } from "react-icons/fa";
-import {
-  BsHouseDoorFill,
-  BsPencilSquare,
-  BsBoxArrowRight,
-} from "react-icons/bs";
 import "./sidebar.css";
 import { Accordion, ScrollArea } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
@@ -20,11 +11,23 @@ import iventory from "../../../public/iventory.svg";
 import user from "../../../public/user.svg";
 import media from "../../../public/media.svg";
 import profile from "../../../public/profile.svg";
-import logout from "../../../public/logout.svg";
+import logout from "/logout.svg";
+import { useDispatch } from "react-redux";
+import { useLogoutMutation } from "../../redux/services/authApi";
+import { removeUser } from "../../redux/slices/authSlice";
+import Cookies from "js-cookie";
 
 const Sidebar = () => {
   const [openedSidebar, { open, close, toggle }] = useDisclosure(false);
+  const token = Cookies.get("token");
+  const dispatch = useDispatch();
+  const [Logout] = useLogoutMutation();
 
+  const logoutHandler = async () => {
+    const { data } = await Logout(token);
+    console.log(data);
+    dispatch(removeUser());
+  };
   return (
     <>
       <div
@@ -48,7 +51,12 @@ const Sidebar = () => {
             </div>
           </div>
 
-          <ScrollArea h={680} scrollbarSize={8} scrollHideDelay={500} className="border-[#3F4245] border-r">
+          <ScrollArea
+            h={680}
+            scrollbarSize={8}
+            scrollHideDelay={500}
+            className="border-[#3F4245] border-r"
+          >
             <div className=" w-[300px] sidebar-body">
               <ul className="py-8 px-6 space-y-5 list-group">
                 <li className="list-item">
@@ -288,10 +296,10 @@ const Sidebar = () => {
                 </li>
 
                 <li className="list-item">
-                  <NavLink
-                    to={`/setting/general`}
+                  <button
                     className="side-menu"
                     onClick={() => {
+                      logoutHandler();
                       close();
                     }}
                   >
@@ -301,7 +309,7 @@ const Sidebar = () => {
                         Logout
                       </span>
                     </div>
-                  </NavLink>
+                  </button>
                 </li>
               </ul>
             </div>

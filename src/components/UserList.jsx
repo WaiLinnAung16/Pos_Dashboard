@@ -1,22 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsArrowRightShort } from "react-icons/bs";
 import { MdEdit } from "react-icons/md";
 import { FaMinus } from "react-icons/fa";
+import Cookies from "js-cookie";
+import { useGetUserListsQuery } from "../redux/services/userApi";
+
 const UserList = () => {
-  const rows = [
-    {
-      id: 1,
-      name: "Wai Linn Aung",
-      position: "Staff",
-      email: "email.com",
-    },
-    {
-      id: 2,
-      name: "Wai Linn Aung",
-      position: "Staff",
-      email: "email.com",
-    },
-  ];
+  const token = Cookies.get("token");
+  const { data } = useGetUserListsQuery(token);
+  const rows = data;
+
+  console.log(data);
   return (
     <table className="table-fixed text-white w-full mt-5">
       <thead>
@@ -29,17 +23,17 @@ const UserList = () => {
         </tr>
       </thead>
       <tbody>
-        {rows.map((row) => {
+        {rows?.map((row) => {
           return (
             <tr key={row.id} className="border border-[#3F4245]">
               <td className=" py-2 px-5">{row.id}</td>
               <td className=" py-2 px-5">{row.name}</td>
-              <td className=" py-2 px-5">{row.position}</td>
-              <td className=" py-2 px-5">{row.position}</td>
+              <td className=" py-2 px-5">{row.role}</td>
+              <td className=" py-2 px-5">{row.email}</td>
               <td className=" py-2 px-5">
                 <div className="flex items-center gap-3">
                   <div className=" w-8 h-8 bg-[#3F4245] grid place-content-center rounded-full">
-                    <FaMinus className="text-lg" />
+                    <FaMinus className="text-lg text-red-500" />
                   </div>
                   <div className=" w-8 h-8 bg-[#3F4245] grid place-content-center rounded-full">
                     <MdEdit className="text-lg" />

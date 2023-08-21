@@ -12,12 +12,20 @@ import Products from "../pages/Products";
 import AddProducts from "../pages/AddProducts";
 import StockControl from "../pages/StockControl";
 import ManageBrands from "../pages/ManageBrands";
+import RouteGuard from "./RouteGuard";
 
 const Path = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route
+          path="/"
+          element={
+            <RouteGuard>
+              <Layout />
+            </RouteGuard>
+          }
+        >
           <Route index element={<Dashboard />} />
           <Route path="media" element={<Media />} />
           <Route path="user-overview" element={<UserOverview />} />

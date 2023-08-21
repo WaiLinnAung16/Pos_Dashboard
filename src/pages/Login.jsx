@@ -1,20 +1,67 @@
 import React, { useState } from "react";
-import { FaFacebookF, FaLinkedinIn, FaGooglePlusG } from "react-icons/fa";
-import {
-  AiOutlineEye,
-  AiOutlineEyeInvisible,
-  AiOutlineMail,
-} from "react-icons/ai";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
-import {BiUser} from "react-icons/bi"
+import { BiUser } from "react-icons/bi";
 import { RiLockLine } from "react-icons/ri";
-import img from "../../public/loginImg.jpg"
+import img from "../../public/loginImg.jpg";
+import { useLoginMutation } from "../redux/services/authApi";
+import { useFormik } from "formik";
+import { Toaster, toast } from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { addUser } from "../redux/slices/authSlice";
+import { useNavigate } from "react-router-dom";
+import * as Yup from "yup";
 
 const Login = () => {
+  const nav = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [login] = useLoginMutation();
+  const dispatch = useDispatch();
+
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.email) {
+      errors.email = "Required";
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+    ) {
+      errors.email = "Invalid email address";
+    }
+
+    if (!values.password) {
+      errors.password = "Required";
+    } else if (values.password.length < 8) {
+      errors.password = "Must be 8 characters or more";
+    }
+
+    return errors;
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validate,
+    onSubmit: async (values) => {
+      const { data } = await login(values);
+      console.log(data);
+      if (data?.token) {
+        dispatch(addUser({ token: data?.token }));
+        toast.success("Successfully login 🤩");
+        setTimeout(() => {
+          nav("/");
+        }, 2000);
+      } else {
+        toast.error("Please enter correct email and password");
+      }
+    },
+  });
 
   return (
     <div className="bg-gray-50 overflow-hidden font-nunito grid lg:grid-cols-5 h-screen">
+      <Toaster position="bottom-center" />
       {/* right login form */}
       <div className="max-lg:hidden col-span-3 bg-[#161618]">
         <img className="h-full w-full object-cover" src={img} alt="" />
@@ -26,35 +73,45 @@ const Login = () => {
             <h1 className=" text-[30px] text-[#E8EAED] font-[700] text-center">
               24Hours
             </h1>
-            <div className=" text-[#E8EAED] text-center text-[28px] font-semibold" >
+            <div className=" text-[#E8EAED] text-center text-[28px] font-semibold">
               <p className="">Welcome Back</p>
             </div>
           </div>
-          <form onSubmit={""} className=" flex flex-col gap-8">
+          <form onSubmit={formik.handleSubmit} className=" flex flex-col gap-8">
             <div className=" relative">
               <input
                 autoFocus
-                onChange={""}
-                defaultValue={""}
+                onChange={formik.handleChange}
+                value={formik.values.email}
                 type="text"
-                name="username"
-                placeholder="Username"
+                id="email"
+                name="email"
+                placeholder="example@gmail.com"
                 className=" text-gray-600 pl-12 py-4 rounded w-full outline-none bg-blue-50"
               />
-              <small className="text-red-500"></small>
+              {formik.errors.email ? (
+                <span className=" text-red-500 text-sm before:content-['*'] before:mr-1 block mt-2">
+                  {formik.errors.email}
+                </span>
+              ) : null}
               <span className=" absolute top-[18px] left-5 text-gray-400 text-lg">
                 <BiUser />
               </span>
             </div>
             <div className=" relative">
               <input
-                onChange={""}
-                defaultValue={""}
+                onChange={formik.handleChange}
                 type={`${showPassword ? "text" : "password"}`}
+                id="password"
                 name="password"
-                placeholder="Password"
+                placeholder="*****"
                 className=" text-gray-600 px-12 py-4 rounded w-full outline-none bg-blue-50"
               />
+              {formik.errors.password ? (
+                <span className=" text-red-500 text-sm before:content-['*'] before:mr-1 block mt-2">
+                  {formik.errors.password}
+                </span>
+              ) : null}
               <span className=" absolute top-[18px] left-5 text-gray-400 text-lg">
                 <RiLockLine />
               </span>
@@ -74,11 +131,11 @@ const Login = () => {
                 </div>
               )}
             </div>
-            
+
             <div className=" flex justify-center">
               <button
-                disabled={""}
-                className={` uppercase text-white font-[700] text-[14px] bg-[#5B96F5] px-14 py-4 rounded-md`}
+                type="submit"
+                className="uppercase text-white font-[700] text-[14px] bg-[#5B96F5] px-14 py-4 rounded-md transition-all duration-300 hover:bg-[#062E6F]"
               >
                 Login
               </button>
