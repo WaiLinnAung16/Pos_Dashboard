@@ -5,6 +5,7 @@ import LoginInfoForm from "../components/LoginInfoForm";
 import PhotoUploadForm from "../components/PhotoUploadForm";
 import Multiform from "../components/Multiform";
 import { Link } from "react-router-dom";
+import TestForm from "../components/TestForm";
 
 const UserCreate = () => {
   const [active, setActive] = useState(0);
@@ -26,10 +27,11 @@ const UserCreate = () => {
         </Link>
       </div>
 
-      <div className="flex items-center gap-5">
-        <Multiform active={active} />
-        <Step active={active} setActive={setActive} nextStep={nextStep} />
-      </div>
+      {/* <div className="flex items-center gap-5">
+        <Multiform active={active} nextStep={nextStep} />
+        <Step active={active} setActive={setActive} />
+      </div> */}
+      <TestForm />
     </div>
   );
 };

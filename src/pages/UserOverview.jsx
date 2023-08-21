@@ -22,7 +22,7 @@ const UserOverview = () => {
         </Link>
       </div>
       <UserList />
-      <UserDetail />
+      {/* <UserDetail /> */}
     </div>
   );
 };

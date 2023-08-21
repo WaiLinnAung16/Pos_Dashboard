@@ -1,7 +1,7 @@
 import { Stepper } from "@mantine/core";
 import { BsArrowRightShort } from "react-icons/bs";
 
-const Step = ({ active, setActive, nextStep }) => {
+const Step = ({ active, setActive }) => {
   return (
     <div className="flex flex-col">
       <Stepper
@@ -20,13 +20,13 @@ const Step = ({ active, setActive, nextStep }) => {
         <Stepper.Step label="Step 2" description="Login Info"></Stepper.Step>
         <Stepper.Step label="Step 3" description="Photo"></Stepper.Step>
       </Stepper>
-      <button
+      {/* <button
         onClick={nextStep}
         className="self-start bg-[#8ab4f8] flex items-center gap-3 px-5 py-[10px] rounded font-semibold"
       >
         Next
         <BsArrowRightShort className="text-xl" />
-      </button>
+      </button> */}
     </div>
   );
 };

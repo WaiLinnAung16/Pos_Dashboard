@@ -9,6 +9,7 @@ export function MediaDropZone() {
       onDrop={(files) => console.log("accepted files", files)}
       onReject={(files) => console.log("rejected files", files)}
       maxSize={3 * 1024 ** 2}
+      multiple={true}
       accept={IMAGE_MIME_TYPE}
       styles={{
         root: {

@@ -5,9 +5,13 @@ import { BsListUl } from "react-icons/bs";
 import MediaGrid from "../components/MediaGrid";
 import MediaTable from "../components/MediaTable";
 import { MediaDropZone } from "../components/MediaDropZone";
+import { useGetPhotoQuery } from "../redux/services/authApi";
+import Cookies from "js-cookie";
 const Media = () => {
   const [toggle, setToggle] = useState(true);
-
+  const token = Cookies.get("token");
+  const { data } = useGetPhotoQuery(token);
+  console.log(data);
   return (
     <div className="bg-[#202124] p-5 min-h-screen">
       <div className="flex flex-col gap-1 mb-5">
@@ -18,19 +22,6 @@ const Media = () => {
       </div>
       {/* Drop Zone */}
       <MediaDropZone />
-      {/* <div className="bg-[#161618] text-white border border-[#3f4245] rounded-md w-full p-10 mt-5 flex flex-col items-center gap-5 cursor-pointer select-none">
-        <div className="w-[120px] h-[120px] rounded-full bg-[#7E7F800D]  grid place-content-center">
-          <div className="  w-[80px] h-[80px] border-2 border-dotted border-[#8AB4F8] rounded-full grid place-content-center">
-            <AiOutlineCloudUpload className="text-3xl" />
-          </div>
-        </div>
-
-        <p>
-          <span className="text-[#8AB4F8] underline">Browse</span> or Drag an
-          Image
-        </p>
-      </div> */}
-      {/* Upload */}
       <div className="flex flex-col gap-3 mt-5">
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-1">
