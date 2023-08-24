@@ -8,9 +8,15 @@ import { BiGridAlt } from "react-icons/bi";
 import BrandsTable from "../components/BrandsTable";
 import ProductsTable from "../components/ProductsTable";
 import ProductsGrid from "../components/ProductsGrid";
+import { useGetProductsQuery } from "../redux/services/productApi";
+import Cookies from "js-cookie";
 
 const Products = () => {
   const [toggle, setToggle] = useState(true);
+  const token = Cookies.get("token");
+
+  const { data: products } = useGetProductsQuery(token);
+  const productsData = products?.data;
   return (
     <div className=" mx-6 my-3 min-h-screen text-white">
       <div className="flex justify-between items-center mb-[50px]">
@@ -23,7 +29,7 @@ const Products = () => {
           </p>
         </div>
         <div className=" flex items-center gap-3">
-        <Link
+          <Link
             to={"/profile-edit"}
             className="px-[16px] py-[7px] cursor-pointer flex items-center gap-2 font-[600] bg-transparent border border-[#7E7F80] text-[#8AB4F8] rounded-[5px]"
           >
@@ -98,7 +104,11 @@ const Products = () => {
         </div>
 
         <div className="mt-[30px]">
-          {toggle ? <ProductsTable /> : <ProductsGrid />}
+          {toggle ? (
+            <ProductsTable productsData={productsData} />
+          ) : (
+            <ProductsGrid productsData={productsData} />
+          )}
         </div>
       </div>
     </div>

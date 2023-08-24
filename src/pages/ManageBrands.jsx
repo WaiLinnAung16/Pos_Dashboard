@@ -6,6 +6,8 @@ import { IoIosArrowDown } from "react-icons/io";
 import BrandsTable from "../components/BrandsTable";
 import { useDisclosure } from "@mantine/hooks";
 import { Drawer, Button, Group } from "@mantine/core";
+import { useGetBrandsQuery } from "../redux/services/productApi";
+import Cookies from "js-cookie";
 
 function handleFileUpload(e) {
   const selectedFile = e.target.files[0];
@@ -16,7 +18,9 @@ function handleFileUpload(e) {
 
 const ManageBrands = () => {
   const [opened, { open, close }] = useDisclosure(false);
-
+  const token = Cookies.get("token");
+  const { data: brands } = useGetBrandsQuery(token);
+  const brandsData = brands?.data;
   return (
     <>
       <Drawer
@@ -49,7 +53,10 @@ const ManageBrands = () => {
         }}
       >
         <div className="w-[228px] h-[92px] cursor-pointer flex flex-col items-center justify-center text-[#E8EAED] bg-[#3F4245CC] border border-dashed border-[#E8EAED] rounded-[5px]">
-          <label htmlFor="fileInput" className="flex flex-col items-center cursor-pointer">
+          <label
+            htmlFor="fileInput"
+            className="flex flex-col items-center cursor-pointer"
+          >
             <AiOutlinePlus size={17} />
             <p className="font-medium">Add Image</p>
           </label>
@@ -168,7 +175,7 @@ const ManageBrands = () => {
           </div>
 
           <div className="mt-[30px]">
-            <BrandsTable />
+            <BrandsTable brandsData={brandsData} />
           </div>
         </div>
       </div>

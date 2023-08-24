@@ -2,20 +2,13 @@ import React from "react";
 import straw from "../../public/strawberry.jpg";
 import ProductsGridCard from "./ProductsGridCard";
 
-const ProductsGrid = () => {
+const ProductsGrid = ({ productsData }) => {
   return (
     <div>
-      <div className=" flex gap-[50px] flex-wrap items-center">
-        <ProductsGridCard/>
-        <ProductsGridCard/>
-        <ProductsGridCard/>
-        <ProductsGridCard/>
-        <ProductsGridCard/>
-        <ProductsGridCard/>
-        <ProductsGridCard/>
-        <ProductsGridCard/>
-        <ProductsGridCard/>
-        <ProductsGridCard/>
+      <div className=" grid grid-cols-12 gap-5">
+        {productsData?.map((product) => {
+          return <ProductsGridCard key={product.id} product={product} />;
+        })}
       </div>
     </div>
   );

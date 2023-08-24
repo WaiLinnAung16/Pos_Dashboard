@@ -11,6 +11,7 @@ const UserCreate = () => {
   const [active, setActive] = useState(0);
   const nextStep = () =>
     setActive((current) => (current < 3 ? current + 1 : current));
+
   return (
     <div className="bg-[#202124] p-5 min-h-screen">
       <div className="flex justify-between items-center">

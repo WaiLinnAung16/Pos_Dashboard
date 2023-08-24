@@ -9,9 +9,12 @@ export const authApi = createApi({
   endpoints: (builder) => ({
     register: builder.mutation({
       query: (user, token) => ({
-        url: "register",
+        url: "addUser",
         method: "POST",
-        headers: { authorization: `Bearer ${token}` },
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded",
+          authorization: `Bearer ${token}`,
+        },
         body: user,
       }),
       invalidatesTags: ["Auth"],
