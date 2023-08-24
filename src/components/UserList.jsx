@@ -8,7 +8,7 @@ import { useGetUserListsQuery } from "../redux/services/userApi";
 const UserList = () => {
   const token = Cookies.get("token");
   const { data } = useGetUserListsQuery(token);
-  const rows = data;
+  const rows = data.users;
 
   console.log(data);
   return (
