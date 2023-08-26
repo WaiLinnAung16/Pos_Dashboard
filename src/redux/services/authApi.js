@@ -8,17 +8,26 @@ export const authApi = createApi({
 
   endpoints: (builder) => ({
     register: builder.mutation({
-      query: (user, token) => ({
+      query: ({ token, user }) => ({
         url: "addUser",
         method: "POST",
-        headers: {
-          "Content-type": "application/x-www-form-urlencoded",
-          authorization: `Bearer ${token}`,
-        },
+        headers: { authorization: `Bearer ${token}` },
         body: user,
       }),
+
+      // register: builder.mutation({
+      //   query: (token, user) => ({
+      //     url: "addUser",
+      //     method: "POST",
+      //     headers: {
+      //       "Content-type": "application/x-www-form-urlencoded",
+      //       authorization: `Bearer ${token}`,
+      //     },
+      //     body: user,
+      //   }),
       invalidatesTags: ["Auth"],
     }),
+
     login: builder.mutation({
       query: (user) => ({
         url: "login",

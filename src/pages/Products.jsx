@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
 import { BsListUl } from "react-icons/bs";
 import { BiGridAlt } from "react-icons/bi";
-import BrandsTable from "../components/BrandsTable";
-import ProductsTable from "../components/ProductsTable";
-import ProductsGrid from "../components/ProductsGrid";
 import { useGetProductsQuery } from "../redux/services/productApi";
 import Cookies from "js-cookie";
+import ProductsTable from "../components/Products/ProductsTable";
+import ProductsGrid from "../components/Products/ProductsGrid";
 
 const Products = () => {
   const [toggle, setToggle] = useState(true);
@@ -17,15 +15,16 @@ const Products = () => {
 
   const { data: products } = useGetProductsQuery(token);
   const productsData = products?.data;
+
   return (
     <div className=" mx-6 my-3 min-h-screen text-white">
       <div className="flex justify-between items-center mb-[50px]">
         <div>
           <h3 className=" text-[22px] font-[600] text-white mb-[8px]">
-            Manage Brands
+            Products
           </h3>
           <p className=" text-[14px] font-[500] tracking-[0.15px] text-white/70">
-            Inventory / Manage Brands
+            Inventory / Products
           </p>
         </div>
         <div className=" flex items-center gap-3">
@@ -35,11 +34,8 @@ const Products = () => {
           >
             Go to Shop
           </Link>
-          <Link
-            to={"/profile-edit"}
-            className="px-[16px] py-[7px] cursor-pointer flex items-center gap-2 text-[#202124] font-[600]  bg-[#8AB4F8] rounded-[5px] transition-all hover:bg-[#8ab4f8a7]"
-          >
-            Add Brand
+          <Link to={"/add-products"} className="customButton">
+            Add Products
           </Link>
         </div>
       </div>
@@ -47,7 +43,7 @@ const Products = () => {
       <div className="">
         <div className=" flex items-center justify-between">
           <h3 className=" text-[22px] text-white font-semibold">
-            Brand Overview
+            Products Overview
           </h3>
           <div className="flex items-center justify-between gap-[10px] bg-transparent border border-[#3F4245] rounded-[5px] w-[260px] h-[34px] px-[11px]">
             <FiSearch className="w-[17px] h-[17px] pt-[2px] cursor-pointer" />

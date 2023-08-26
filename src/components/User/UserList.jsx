@@ -3,12 +3,12 @@ import { BsArrowRightShort } from "react-icons/bs";
 import { MdEdit } from "react-icons/md";
 import { FaMinus } from "react-icons/fa";
 import Cookies from "js-cookie";
-import { useGetUserListsQuery } from "../redux/services/userApi";
+import { useGetUserListsQuery } from "../../redux/services/userApi";
 
 const UserList = () => {
   const token = Cookies.get("token");
   const { data } = useGetUserListsQuery(token);
-  const rows = data.users;
+  const rows = data?.users;
 
   console.log(data);
   return (

@@ -1,9 +1,7 @@
 import React from "react";
 import { BsPlusLg } from "react-icons/bs";
-import UserList from "../components/UserList";
 import { Link } from "react-router-dom";
-import UserDetail from "../components/UserDetail";
-
+import UserList from "../components/User/UserList";
 const UserOverview = () => {
   return (
     <div className="bg-[#202124] p-5 min-h-screen">
@@ -22,7 +20,6 @@ const UserOverview = () => {
         </Link>
       </div>
       <UserList />
-      {/* <UserDetail /> */}
     </div>
   );
 };

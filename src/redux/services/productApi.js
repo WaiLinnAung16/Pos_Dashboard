@@ -27,8 +27,19 @@ export const productApi = createApi({
       }),
       providesTags: ["stocks"],
     }),
+    getProductDetail: builder.query({
+      query: ({ id, token }) => ({
+        url: `product/${id}`,
+        headers: { authorization: `Bearer ${token}` },
+      }),
+      providesTags: ["products"],
+    }),
   }),
 });
 
-export const { useGetProductsQuery, useGetBrandsQuery, useGetStocksQuery } =
-  productApi;
+export const {
+  useGetProductsQuery,
+  useGetBrandsQuery,
+  useGetStocksQuery,
+  useGetProductDetailQuery,
+} = productApi;

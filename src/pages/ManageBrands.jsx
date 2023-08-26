@@ -1,11 +1,10 @@
 import React from "react";
 import { AiOutlinePlus } from "react-icons/ai";
-import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
-import BrandsTable from "../components/BrandsTable";
+import BrandsTable from "../components/Brands/BrandsTable";
 import { useDisclosure } from "@mantine/hooks";
-import { Drawer, Button, Group } from "@mantine/core";
+import { Drawer, Group } from "@mantine/core";
 import { useGetBrandsQuery } from "../redux/services/productApi";
 import Cookies from "js-cookie";
 

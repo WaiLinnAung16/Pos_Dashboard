@@ -1,9 +1,14 @@
 import React from "react";
-import straw from "../../public/strawberry.jpg";
+import straw from "/strawberry.jpg";
+import { useNavigate } from "react-router-dom";
 
 const ProductsGridCard = ({ product }) => {
+  const nav = useNavigate();
   return (
-    <div className=" col-span-2 border border-[#3F4245] rounded-[5px]">
+    <div
+      onClick={() => nav(`/product-detail/${product?.id}`)}
+      className=" col-span-2 border border-[#3F4245] rounded-[5px]"
+    >
       <div>
         <img src={straw} alt="" className=" overflow-hidden" />
       </div>

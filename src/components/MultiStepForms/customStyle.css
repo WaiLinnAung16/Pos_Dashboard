@@ -1,0 +1,17 @@
+.mantine-TextInput-input {
+  background-color: #202124;
+  color: white;
+  border-color: #3f4245;
+}
+
+.mantine-Stepper-stepLabel {
+  color: white;
+}
+
+.mantine-PasswordInput-input {
+  background-color: #202124;
+  border-color: #3f4245;
+}
+.mantine-PasswordInput-innerInput {
+  color: white;
+}

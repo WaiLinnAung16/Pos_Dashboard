@@ -4,7 +4,6 @@ import "./sidebar.css";
 import { Accordion, ScrollArea } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Link, NavLink } from "react-router-dom";
-
 import overview from "../../../public/overview.svg";
 import sale from "../../../public/sale.svg";
 import iventory from "../../../public/iventory.svg";
@@ -33,7 +32,7 @@ const Sidebar = () => {
       <div
         className={`sticky h-screen ${
           openedSidebar && "sidebar-close"
-        } bg-[#161618] border-[#3F4245] text-[#DFDFDF] select-none w-[300px] transition-all duration-500 max-xl:hidden sidebar top-0 font-nunito`}
+        } bg-[#161618] border-[#3F4245] text-[#DFDFDF] select-none w-[300px] transition-all duration-500 max-xl:hidden sidebar top-0`}
       >
         <div>
           <div className="sticky top-0 z-50 flex items-center gap-5 h-[56px] px-6 border-b-[1px] bg-[#202124] border-[#3F4245]">
@@ -42,12 +41,6 @@ const Sidebar = () => {
               className=" relative sidebar-menu text-3xl cursor-pointer "
             >
               <IoIosMenu />
-            </div>
-
-            <div className=" w-[117px] logo-container">
-              <NavLink to={`/`} className="focus-visible:outline-none">
-                <img className="" src={""} alt="" />
-              </NavLink>
             </div>
           </div>
 
@@ -98,7 +91,7 @@ const Sidebar = () => {
                               onClick={() => {
                                 close();
                               }}
-                              to={`/booking`}
+                              to={`/cashier`}
                               className="side-menu hover:text-white text-[14px]"
                             >
                               <span className="">Cashier</span>
@@ -109,7 +102,7 @@ const Sidebar = () => {
                               onClick={() => {
                                 close();
                               }}
-                              to={`/booking-add`}
+                              to={`/recent`}
                               className="side-menu hover:text-white text-[14px]"
                             >
                               <span className="">Recent</span>

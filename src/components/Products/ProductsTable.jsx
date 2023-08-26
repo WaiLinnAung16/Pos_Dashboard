@@ -2,8 +2,10 @@ import React from "react";
 import { MdEdit } from "react-icons/md";
 import { AiOutlineMinus } from "react-icons/ai";
 import { GoArrowRight } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 
 const ProductsTable = ({ productsData }) => {
+  const nav = useNavigate();
   return (
     <table className=" table  text-white w-full mt-5 text-[12px]">
       <thead>
@@ -20,7 +22,11 @@ const ProductsTable = ({ productsData }) => {
       <tbody>
         {productsData?.map((row, index) => {
           return (
-            <tr key={row.id} className="border border-[#3F4245]">
+            <tr
+              onClick={() => nav(`/product-detail/${row.id}`)}
+              key={row.id}
+              className="border border-[#3F4245] hover:bg-[#1a1a1a] select-none cursor-pointer"
+            >
               <td className=" py-2 px-5 w-10">{index + 1}</td>
               <td className=" py-2 px-5 ">{row.name}</td>
               <td className=" py-2 px-5 w-32">{row.id}</td>

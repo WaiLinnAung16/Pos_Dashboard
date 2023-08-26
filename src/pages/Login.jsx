@@ -3,7 +3,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 import { BiUser } from "react-icons/bi";
 import { RiLockLine } from "react-icons/ri";
-import img from "../../public/loginImg.jpg";
+import img from "/public/login.svg";
 import { useLoginMutation } from "../redux/services/authApi";
 import { useFormik } from "formik";
 import { Toaster, toast } from "react-hot-toast";
@@ -60,17 +60,23 @@ const Login = () => {
   });
 
   return (
-    <div className="bg-gray-50 overflow-hidden font-nunito grid lg:grid-cols-5 h-screen">
+    <div className="bg-gray-50 overflow-hidden font-nunito grid lg:grid-cols-5 h-screen ">
       <Toaster position="bottom-center" />
       {/* right login form */}
-      <div className="max-lg:hidden col-span-3 bg-[#161618]">
-        <img className="h-full w-full object-cover" src={img} alt="" />
+      <div
+        className="max-lg:hidden col-span-3  grid place-content-center "
+        style={{
+          backgroundImage:
+            "linear-gradient(336deg, rgb(62, 25, 113),rgb(72, 105, 206))",
+        }}
+      >
+        <img className="h-[500px]" src={img} alt="" />
       </div>
       {/* right   */}
       <div className="  col-span-2 flex justify-center items-center max-[400px]:mx-4 bg-[#202124]">
-        <div className=" max-[400px]:w-[300px] w-[400px]">
+        <div className="w-[400px]">
           <div className="flex flex-col gap-2 mb-8">
-            <h1 className=" text-[30px] text-[#E8EAED] font-[700] text-center">
+            <h1 className=" text-[30px] text-white font-black tracking-wider text-center">
               24Hours
             </h1>
             <div className=" text-[#E8EAED] text-center text-[28px] font-semibold">

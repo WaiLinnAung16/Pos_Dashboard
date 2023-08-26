@@ -1,5 +1,4 @@
 import React from "react";
-import straw from "../../public/strawberry.jpg";
 import ProductsGridCard from "./ProductsGridCard";
 
 const ProductsGrid = ({ productsData }) => {

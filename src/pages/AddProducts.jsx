@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
-import ProductStep from "../components/ProductStep";
-import MultiProductsForm from "../components/MultiProductsForm";
+import ProductsForm from "../components/MultiStepForms/ProductsForm";
 
 const AddProducts = () => {
   const [active, setActive] = useState(0);
@@ -23,14 +21,7 @@ const AddProducts = () => {
           </button>
         </Link>
       </div>
-      <div className="flex items-center gap-5">
-        <MultiProductsForm active={active} />
-        <ProductStep
-          active={active}
-          setActive={setActive}
-          nextStep={nextStep}
-        />
-      </div>
+      <ProductsForm />
     </div>
   );
 };
