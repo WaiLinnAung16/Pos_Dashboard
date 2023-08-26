@@ -3,19 +3,31 @@ import { API } from "../API";
 
 export const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({ baseUrl: API, credentials: "include" }),
+  baseQuery: fetchBaseQuery({ baseUrl: API }),
   tagTypes: ["Auth"],
 
   endpoints: (builder) => ({
     register: builder.mutation({
-      query: (user, token) => ({
-        url: "register",
+      query: ({ token, user }) => ({
+        url: "addUser",
         method: "POST",
         headers: { authorization: `Bearer ${token}` },
         body: user,
       }),
+
+      // register: builder.mutation({
+      //   query: (token, user) => ({
+      //     url: "addUser",
+      //     method: "POST",
+      //     headers: {
+      //       "Content-type": "application/x-www-form-urlencoded",
+      //       authorization: `Bearer ${token}`,
+      //     },
+      //     body: user,
+      //   }),
       invalidatesTags: ["Auth"],
     }),
+
     login: builder.mutation({
       query: (user) => ({
         url: "login",

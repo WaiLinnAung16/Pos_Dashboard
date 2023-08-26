@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import { AiOutlineCloudUpload } from "react-icons/ai";
 import { BiGridAlt } from "react-icons/bi";
 import { BsListUl } from "react-icons/bs";
-import MediaGrid from "../components/MediaGrid";
-import MediaTable from "../components/MediaTable";
-import { MediaDropZone } from "../components/MediaDropZone";
+import MediaGrid from "../components/Media/MediaGrid";
+import MediaTable from "../components/Media/MediaTable";
+import MediaDropZone from "../components/Media/MediaDropZone";
 import { useGetPhotoQuery } from "../redux/services/authApi";
 import Cookies from "js-cookie";
 const Media = () => {
   const [toggle, setToggle] = useState(true);
   const token = Cookies.get("token");
-  const { data } = useGetPhotoQuery(token);
-  console.log(data);
+  const { data: media } = useGetPhotoQuery(token);
+  console.log(media);
   return (
     <div className="bg-[#202124] p-5 min-h-screen">
       <div className="flex flex-col gap-1 mb-5">
@@ -44,7 +43,13 @@ const Media = () => {
             </div>
           </div>
         </div>
-        <div className="mt-5">{toggle ? <MediaGrid /> : <MediaTable />}</div>
+        <div className="mt-5">
+          {toggle ? (
+            <MediaTable media={media?.data} />
+          ) : (
+            <MediaGrid media={media?.data} />
+          )}
+        </div>
       </div>
     </div>
   );

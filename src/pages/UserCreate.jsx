@@ -1,16 +1,9 @@
-import React, { useState } from "react";
-import PersonalForm from "../components/PersonalForm";
-import Step from "../components/Step";
-import LoginInfoForm from "../components/LoginInfoForm";
-import PhotoUploadForm from "../components/PhotoUploadForm";
-import Multiform from "../components/Multiform";
+import React from "react";
+
 import { Link } from "react-router-dom";
-import TestForm from "../components/TestForm";
+import UserCreateForm from "../components/MultiStepForms/UserCreateForm";
 
 const UserCreate = () => {
-  const [active, setActive] = useState(0);
-  const nextStep = () =>
-    setActive((current) => (current < 3 ? current + 1 : current));
   return (
     <div className="bg-[#202124] p-5 min-h-screen">
       <div className="flex justify-between items-center">
@@ -26,12 +19,7 @@ const UserCreate = () => {
           </button>
         </Link>
       </div>
-
-      {/* <div className="flex items-center gap-5">
-        <Multiform active={active} nextStep={nextStep} />
-        <Step active={active} setActive={setActive} />
-      </div> */}
-      <TestForm />
+      <UserCreateForm />
     </div>
   );
 };

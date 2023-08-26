@@ -2,7 +2,7 @@ import { Group, Text, useMantineTheme, rem } from "@mantine/core";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 
-export function MediaDropZone() {
+export default function MediaDropZone() {
   const theme = useMantineTheme();
   return (
     <Dropzone

@@ -13,6 +13,9 @@ import AddProducts from "../pages/AddProducts";
 import StockControl from "../pages/StockControl";
 import ManageBrands from "../pages/ManageBrands";
 import RouteGuard from "./RouteGuard";
+import ProductDetail from "../pages/ProductDetail";
+import Recent from "../pages/Recent";
+import Cashier from "../pages/Cashier";
 
 const Path = () => {
   return (
@@ -36,7 +39,10 @@ const Path = () => {
           <Route path="add-products" element={<AddProducts />} />
           <Route path="stock-control" element={<StockControl />} />
           <Route path="manage-brands" element={<ManageBrands />} />
+          <Route path="product-detail/:id" element={<ProductDetail />} />
+          <Route path="recent" element={<Recent />} />
         </Route>
+        <Route path="/cashier" element={<Cashier />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
