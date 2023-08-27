@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
@@ -12,9 +12,7 @@ import ProductsGrid from "../components/Products/ProductsGrid";
 const Products = () => {
   const [toggle, setToggle] = useState(true);
   const token = Cookies.get("token");
-
-  const { data: products } = useGetProductsQuery(token);
-  const productsData = products?.data;
+  const { data: products, isLoading } = useGetProductsQuery(token);
 
   return (
     <div className=" mx-6 my-3 min-h-screen text-white">
@@ -101,9 +99,12 @@ const Products = () => {
 
         <div className="mt-[30px]">
           {toggle ? (
-            <ProductsTable productsData={productsData} />
+            <ProductsTable
+              productsData={products?.data}
+              isLoading={isLoading}
+            />
           ) : (
-            <ProductsGrid productsData={productsData} />
+            <ProductsGrid productsData={products?.data} />
           )}
         </div>
       </div>

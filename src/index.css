@@ -9,5 +9,5 @@
   }
 }
 .customButton {
-  @apply px-[16px] py-[7px] cursor-pointer flex items-center gap-2 text-[#202124] font-[600]  bg-[#8AB4F8] rounded-[5px] transition-all hover:bg-[#8ab4f8a7];
+  @apply px-[16px] py-[7px] cursor-pointer  text-[#202124] font-[600]  bg-[#8AB4F8] rounded-[5px] transition-all hover:bg-[#8ab4f8a7];
 }

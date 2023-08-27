@@ -11,51 +11,24 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../redux/slices/authSlice";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { hasLength, isEmail, useForm } from "@mantine/form";
+import { PasswordInput, TextInput } from "@mantine/core";
 
 const Login = () => {
   const nav = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
+
   const [login] = useLoginMutation();
   const dispatch = useDispatch();
 
-  const validate = (values) => {
-    const errors = {};
-
-    if (!values.email) {
-      errors.email = "Required";
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    ) {
-      errors.email = "Invalid email address";
-    }
-
-    if (!values.password) {
-      errors.password = "Required";
-    } else if (values.password.length < 8) {
-      errors.password = "Must be 8 characters or more";
-    }
-
-    return errors;
-  };
-
-  const formik = useFormik({
+  const form = useForm({
     initialValues: {
       email: "",
       password: "",
     },
-    validate,
-    onSubmit: async (values) => {
-      const { data } = await login(values);
-      console.log(data);
-      if (data?.token) {
-        dispatch(addUser({ token: data?.token }));
-        toast.success("Successfully login 🤩");
-        setTimeout(() => {
-          nav("/");
-        }, 2000);
-      } else {
-        toast.error("Please enter correct email and password");
-      }
+
+    validate: {
+      email: isEmail("Invalid Email"),
+      password: hasLength({ min: 8, max: 20 }, "Password must be 8 characters"),
     },
   });
 
@@ -74,78 +47,51 @@ const Login = () => {
       </div>
       {/* right   */}
       <div className="  col-span-2 flex justify-center items-center max-[400px]:mx-4 bg-[#202124]">
-        <div className="w-[400px]">
-          <div className="flex flex-col gap-2 mb-8">
-            <h1 className=" text-[30px] text-white font-black tracking-wider text-center">
-              24Hours
+        <div className="flex flex-col gap-5 w-[60%] text-white">
+          <div>
+            <h1 className="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#8AB4F8] to-[#fff]">
+              24 Hours
             </h1>
-            <div className=" text-[#E8EAED] text-center text-[28px] font-semibold">
-              <p className="">Welcome Back</p>
-            </div>
+            <h2 className="text-2xl font-semibold mt-3">Welcome Back 👋</h2>
           </div>
-          <form onSubmit={formik.handleSubmit} className=" flex flex-col gap-8">
-            <div className=" relative">
-              <input
-                autoFocus
-                onChange={formik.handleChange}
-                value={formik.values.email}
-                type="text"
-                id="email"
-                name="email"
-                placeholder="example@gmail.com"
-                className=" text-gray-600 pl-12 py-4 rounded w-full outline-none bg-blue-50"
-              />
-              {formik.errors.email ? (
-                <span className=" text-red-500 text-sm before:content-['*'] before:mr-1 block mt-2">
-                  {formik.errors.email}
-                </span>
-              ) : null}
-              <span className=" absolute top-[18px] left-5 text-gray-400 text-lg">
-                <BiUser />
-              </span>
-            </div>
-            <div className=" relative">
-              <input
-                onChange={formik.handleChange}
-                type={`${showPassword ? "text" : "password"}`}
-                id="password"
-                name="password"
-                placeholder="*****"
-                className=" text-gray-600 px-12 py-4 rounded w-full outline-none bg-blue-50"
-              />
-              {formik.errors.password ? (
-                <span className=" text-red-500 text-sm before:content-['*'] before:mr-1 block mt-2">
-                  {formik.errors.password}
-                </span>
-              ) : null}
-              <span className=" absolute top-[18px] left-5 text-gray-400 text-lg">
-                <RiLockLine />
-              </span>
-              {showPassword ? (
-                <div
-                  onClick={() => setShowPassword(!showPassword)}
-                  className=" cursor-pointer absolute right-5 top-[12px] text-gray-600 w-8 h-8 flex justify-center items-center hover:bg-blue-100 transition duration-200 rounded-full"
-                >
-                  <AiOutlineEyeInvisible />
-                </div>
-              ) : (
-                <div
-                  onClick={() => setShowPassword(!showPassword)}
-                  className=" cursor-pointer absolute right-5 top-[12px] text-gray-600 w-8 h-8 flex justify-center items-center hover:bg-blue-100 transition duration-200 rounded-full"
-                >
-                  <AiOutlineEye />
-                </div>
-              )}
-            </div>
-
-            <div className=" flex justify-center">
-              <button
-                type="submit"
-                className="uppercase text-white font-[700] text-[14px] bg-[#5B96F5] px-14 py-4 rounded-md transition-all duration-300 hover:bg-[#062E6F]"
-              >
-                Login
-              </button>
-            </div>
+          <form
+            onSubmit={form.onSubmit(async (values) => {
+              const { data } = await login(values);
+              console.log(data);
+              if (data?.token) {
+                dispatch(addUser({ token: data?.token }));
+                toast.success("Successfully login 🤩");
+                setTimeout(() => {
+                  nav("/");
+                }, 2000);
+              } else {
+                toast.error("Please enter correct email and password");
+              }
+            })}
+            className="flex flex-col gap-5"
+          >
+            <TextInput
+              placeholder="your@gmail.com"
+              styles={{
+                input: {
+                  padding: "1.3rem 1rem",
+                },
+              }}
+              {...form.getInputProps("email")}
+            />
+            <PasswordInput
+              placeholder="password"
+              styles={{
+                input: {
+                  padding: "1.3rem 1rem",
+                },
+              }}
+              {...form.getInputProps("password")}
+            />
+            <span className="text-sm font-light underline self-end">
+              Forgot password?
+            </span>
+            <button className="customButton text-center">Login</button>
           </form>
         </div>
       </div>
